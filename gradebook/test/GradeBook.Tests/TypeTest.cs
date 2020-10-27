@@ -6,7 +6,7 @@ namespace GradeBook.Tests
     public class TypeTests
     {
         [Fact] //Attribute
-        public void ValueTyoeAlsoPassByValue()
+        public void ValueTypeAlsoPassByValue()
         {
             var x = GetInt();
             SetInt(ref x);
@@ -84,6 +84,19 @@ namespace GradeBook.Tests
         private void SetName(Book book, string name)
         {
             book.Name=name;
+        }
+        [Fact]
+        public void StringsBehaveLikeValueTypes()
+        {
+            string name = "Robert";
+            var upper = MakeUpperCase(name);
+            Assert.Equal("Robert", name);
+            Assert.Equal("ROBERT", upper);
+        }
+
+        private string MakeUpperCase(string parameter)
+        {
+            return parameter.ToUpper();            
         }
     }
 }
